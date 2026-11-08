@@ -72,7 +72,7 @@ ${userName ? `User name is ${userName}.` : ``}`;
     const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": `Bearer ${process.env.GROQ_API_KEY}` },
-      body: JSON.stringify({ model: "llama-3.3-70b-versatile", messages: [{ role: "system", content: system }, ...history.slice(-20), { role: "user", content: message }], temperature: 0.7, max_tokens: 1000 })
+      body: JSON.stringify({ model: "openai/gpt-oss-120b", messages: [{ role: "system", content: system }, ...history.slice(-20), { role: "user", content: message }], temperature: 0.7, max_tokens: 1000 })
     });
     const data = await r.json();
     if (!data.choices?.[0]?.message?.content) {

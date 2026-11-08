@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "description": "TrustMart AI - Buy Safe. Sell Trusted. Safe marketplace for clothes, shoes and jewellery.",
   "scripts": {
     "dev": "vercel dev",
     "build": "echo Build done",
     "start": "vercel dev"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "@supabase/supabase-js": "^2.45.4"
   }
 }

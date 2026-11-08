@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TrustMart AI - Buy Safe Worldwide</title>
+<script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-slate-50">
+<header class="bg-white p-4 flex justify-between items-center shadow sticky top-0 z-10">
+<div class="font-black text-xl">🛡️ TrustMart <span class="text-green-600">AI</span></div>
+<div class="flex gap-2">
+<select id="currency" class="text-xs border rounded-full px-2 py-1"><option>🌍 Worldwide</option><option>🇳🇬 Nigeria</option><option>🇺🇸 USA</option><option>🇬🇧 UK</option><option>🇬🇭 Ghana</option><option>🇦🇪 UAE</option></select>
+<a href="#" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm">Join Free</a>
+</div>
+</header>
+
+<div class="p-5 text-center">
+<div class="text-xs bg-green-100 text-green-700 inline-block px-3 py-1 rounded-full">🌍 Trusted in 190+ Countries</div>
+<h1 class="text-3xl font-black mt-3">Buy From People<br>You Can <span class="text-green-600">Trust.</span><br>Anywhere In The World.</h1>
+<p class="text-slate-500 mt-2">AI checks every seller. Escrow holds your money until you get your item. No delivery = Full refund. Worldwide.</p>
+<input id="search" onkeyup="filterSellers()" placeholder="Search worldwide: iPhone, Thrift, Shoes, Wigs..." class="w-full mt-4 p-3 rounded-xl border">
+<div class="flex gap-2 justify-center mt-3 flex-wrap">
+<button onclick="filterCountry('All')" class="text-xs bg-black text-white px-3 py-1 rounded-full">All</button>
+<button onclick="filterCountry('Nigeria')" class="text-xs bg-white border px-3 py-1 rounded-full">🇳🇬 Nigeria</button>
+<button onclick="filterCountry('USA')" class="text-xs bg-white border px-3 py-1 rounded-full">🇺🇸 USA</button>
+<button onclick="filterCountry('UK')" class="text-xs bg-white border px-3 py-1 rounded-full">🇬🇧 UK</button>
+<button onclick="filterCountry('Ghana')" class="text-xs bg-white border px-3 py-1 rounded-full">🇬🇭 Ghana</button>
+<button onclick="filterCountry('UAE')" class="text-xs bg-white border px-3 py-1 rounded-full">🇦🇪 UAE</button>
+</div>
+</div>
+
+<div class="p-4">
+<h2 class="font-bold text-lg">🔥 Top Trusted Sellers – AI Ranked Worldwide</h2>
+<div id="sellers" class="grid gap-3 mt-3"></div>
+</div>
+
+<div class="p-4 bg-white m-4 rounded-2xl">
+<h3 class="font-bold">🛡️ How Worldwide Escrow Works</h3>
+<p class="text-sm text-slate-500 mt-1">1. You pay to TrustMart (Escrow) → 2. Seller ships worldwide with tracking → 3. You confirm delivery → 4. Seller gets paid. No delivery = Full refund, anywhere.</p>
+</div>
+
+<div class="p-4 bg-black text-white m-4 rounded-2xl text-center">
+<h3 class="font-bold">Sell To The Whole World</h3>
+<p class="text-sm text-slate-300 mt-1">List in 2 minutes. Get paid in Naira, Dollar, Pound or Euro.</p>
+<button class="bg-green-500 text-white px-5 py-2 rounded-full text-sm mt-3">Start Selling – Free</button>
+</div>
+
+<script>
+let allSellers=[
+{name:"Ada – Lagos",country:"Nigeria",score:96,sales:148,item:"Thrift Bales",badge:"Verified"},
+{name:"Sarah – London",country:"UK",score:94,sales:132,item:"Designer Bags",badge:"Verified"},
+{name:"James – New York",country:"USA",score:92,sales:112,item:"iPhones",badge:"Verified"},
+{name:"Aisha – Dubai",country:"UAE",score:89,sales:86,item:"Wigs & Hair",badge:"Verified"},
+{name:"Kwame – Accra",country:"Ghana",score:88,sales:91,item:"Sneakers",badge:"Verified"},
+{name:"Musa – Kano",country:"Nigeria",score:84,sales:64,item:"Sneakers",badge:"Verified"},
+{name:"Emma – Toronto",country:"USA",score:83,sales:58,item:"Vintage Clothes",badge:"New"},
+{name:"Zainab – Nairobi",country:"Ghana",score:81,sales:42,item:"Jewellery",badge:"New"},
+];
+let currentCountry='All';
+function render(list){
+document.getElementById('sellers').innerHTML=list.map(s=>`
+<div class="bg-white p-4 rounded-2xl shadow flex justify-between">
+<div><b>${s.name}, ${s.country}</b><div class="text-sm text-slate-500">${s.item} • ${s.sales} sales</div>
+<span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">✓ ${s.badge}</span></div>
+<div class="text-right"><div class="text-2xl font-black text-green-600">${s.score}</div><div class="text-xs">Trust Score</div>
+<button class="bg-black text-white px-3 py-1 rounded-full text-xs mt-1">Chat</button></div>
+</div>`).join('');
+}
+function filterCountry(c){currentCountry=c; applyFilter();}
+function filterSellers(){applyFilter();}
+function applyFilter(){
+let q=document.getElementById('search').value.toLowerCase();
+let f=allSellers.filter(s=>(currentCountry==='All'||s.country===currentCountry)&&(s.name.toLowerCase().includes(q)||s.item.toLowerCase().includes(q)||s.country.toLowerCase().includes(q)));
+render(f);
+}
+render(allSellers);
+</script>
+</body></html>

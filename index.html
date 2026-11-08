@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TrustMart AI - Buy Safe. Sell Trusted.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>.reveal{opacity:0;transform:translateY(30px)} .img-card img{height:200px;width:100%;object-fit:cover;border-radius:16px}</style>
+</head>
+<body class="bg-slate-50">
+<header class="bg-white p-4 flex justify-between items-center shadow sticky top-0 z-50">
+<div class="font-black text-xl">🛡️ TrustMart <span class="text-green-600">AI</span></div>
+<button onclick="openAI()" class="bg-black text-white px-5 py-2 rounded-full text-sm font-bold">GET STARTED</button>
+</header>
+
+<!-- HERO WITH IMAGE -->
+<section class="p-4">
+<img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80" class="w-full h-[280px] object-cover rounded-3xl" alt="People shaking hands trust">
+<div class="text-center mt-4">
+<div class="text-xs bg-green-100 text-green-700 inline-block px-3 py-1 rounded-full">Trusted in 190+ Countries • Verified Sellers</div>
+<h1 class="text-3xl font-black mt-3">Buy From People<br>You Can <span class="text-green-600">Trust.</span></h1>
+<p class="text-slate-500 mt-2">Clothes, Shoes & Jewellery. Verified sellers. 12-hour protection.</p>
+<button onclick="openAI()" class="bg-green-600 text-white px-6 py-3 rounded-full mt-4 font-bold">Chat With Trusty →</button>
+<p class="text-xs text-slate-400 mt-2">Ask anything – not just TrustMart. Like ChatGPT, but knows TrustMart.</p>
+</div>
+</section>
+
+<!-- CATEGORIES WITH IMAGES -->
+<section class="p-4 grid grid-cols-3 gap-3 text-center">
+<div class="reveal bg-white rounded-2xl overflow-hidden shadow"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80" class="h-28 w-full object-cover"><p class="font-bold py-2 text-sm">Clothes</p></div>
+<div class="reveal bg-white rounded-2xl overflow-hidden shadow"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" class="h-28 w-full object-cover"><p class="font-bold py-2 text-sm">Shoes</p></div>
+<div class="reveal bg-white rounded-2xl overflow-hidden shadow"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80" class="h-28 w-full object-cover"><p class="font-bold py-2 text-sm">Jewellery</p></div>
+</section>
+
+<section class="reveal p-5 bg-white m-4 rounded-2xl"><h2 class="font-black text-xl">What Is TrustMart All About?</h2>
+<img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&q=80" class="w-full h-44 object-cover rounded-2xl my-3">
+<p class="text-slate-600 text-sm">TrustMart is a safe marketplace for clothes, shoes, and jewellery. You do not just buy and sell. You buy and sell with people who have been verified. Trusty – our AI – helps you create your account, add goods, find customers, and check if someone is legit BEFORE you send money.</p></section>
+
+<section class="reveal p-5 bg-white m-4 rounded-2xl"><h2 class="font-black text-xl">Why Do You Need Trust?</h2>
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80" class="w-full h-44 object-cover rounded-2xl my-3">
+<p class="text-slate-600 text-sm">Every day, people lose money to fake sellers and fake buyers on Instagram, WhatsApp, Facebook. Seller collects money and never delivers. Buyer orders and never pays. Without trust, there is no safe business. TrustMart was built to solve this.</p></section>
+
+<section class="reveal p-5 bg-white m-4 rounded-2xl"><h2 class="font-black text-xl">How Does Trust Work?</h2>
+<img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=80" class="w-full h-44 object-cover rounded-2xl my-3">
+<p class="text-slate-600 text-sm"><b>1. Verify –</b> Phone, address, NIN, identity.<br><b>2. Score –</b> Trust Score 0 to 100.<br><b>3. Recommend –</b> High score = we recommend you as Trusted & Legit. Low score = we don't recommend you.</p></section>
+
+<section class="reveal p-5 bg-black text-white m-4 rounded-2xl"><h2 class="font-black text-xl">Everything About TrustMart</h2>
+<img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=900&q=80" class="w-full h-44 object-cover rounded-2xl my-3">
+<p class="text-sm text-slate-300">• Sellers: Add goods, get verified, get recommended<br>• Buyers: Search, check seller before you pay<br>• Everyone: Ask Trusty anytime – “Is this person legit?”</p></section>
+
+<!-- AI BUBBLE - SMALLER, WITH CLOSE -->
+<div id="aiBubble" class="fixed bottom-4 right-4 z-50 bg-black text-white p-3 rounded-2xl shadow-2xl max-w-[260px] hidden">
+<div class="flex justify-between"><span class="text-xs text-green-400 font-bold">Trusty • Online</span><button onclick="hideBubble()" class="text-white text-xs">✕</button></div>
+<div class="text-sm mt-1">Hey! I'm Trusty. Ask me anything – business, fashion, or is this person legit?</div>
+<div class="flex gap-2 mt-2"><button onclick="openAI()" class="bg-white text-black px-3 py-1 rounded-full text-xs">Chat Now</button><button onclick="openAI(); setTimeout(()=>quickClick('I want to start selling'),500)" class="bg-green-500 px-3 py-1 rounded-full text-xs">Start Selling</button></div>
+</div>
+
+<div id="chatBox" class="fixed inset-0 bg-black/50 z-[60] hidden flex items-end sm:items-center justify-center p-2">
+<div class="bg-white w-full max-w-md rounded-2xl overflow-hidden flex flex-col h-[85vh]">
+<div class="bg-black text-white p-4 flex justify-between"><div><b>🛡️ Trusty – TrustMart AI</b><div class="text-xs text-green-400">Online • Remembers you • Answers anything</div></div><button onclick="closeAI()">✕</button></div>
+<div id="msgs" class="flex-1 overflow-y-auto p-3 space-y-2 text-sm"></div>
+<div id="quick" class="p-2 flex gap-2 flex-wrap"></div>
+<div class="flex p-2 border-t"><input id="inp" class="flex-1 border rounded-full px-3 py-2 text-sm" placeholder="Ask Trusty anything..."><button onclick="sendMsg()" class="bg-green-600 text-white px-4 rounded-full ml-2">Send</button></div>
+</div></div>
+
+<script>
+const SUPABASE_URL="PASTE_YOUR_SUPABASE_URL_HERE";
+const SUPABASE_KEY="PASTE_YOUR_SUPABASE_ANON_KEY_HERE";
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+gsap.registerPlugin(ScrollTrigger);
+document.querySelectorAll('.reveal').forEach(el=>{gsap.to(el,{opacity:1,y:0,duration:0.9,scrollTrigger:{trigger:el,start:"top 88%"}})});
+let bubbleShown=false;
+setInterval(()=>{
+  if(!bubbleShown && document.getElementById('chatBox').classList.contains('hidden')){
+    let b=document.getElementById('aiBubble'); b.classList.remove('hidden');
+    gsap.fromTo(b,{x:200,opacity:0},{x:0,opacity:1,duration:1});
+    setTimeout(()=>{ if(document.getElementById('chatBox').classList.contains('hidden')) b.classList.add('hidden'); },5000);
+    bubbleShown=true;
+  }
+},3000);
+function hideBubble(){document.getElementById('aiBubble').classList.add('hidden'); bubbleShown=true;}
+let history=[], userName=localStorage.getItem('trusty_name')||"";
+function openAI(){document.getElementById('chatBox').classList.remove('hidden');document.getElementById('aiBubble').classList.add('hidden'); if(history.length==0){ if(userName){aiSay("Welcome back "+userName+"! 😊 What do you want to do today? I can help you sell, buy, check someone, or answer any question.");} else {aiSay("Hey! I'm Trusty, the brain of TrustMart 🧠. I can help you buy, sell, check if someone is legit, price your goods, or answer ANY question like ChatGPT. What’s your name? Or just ask me anything.");} showQuick(["I want to sell","I want to buy","Is someone legit?","Tell me a business idea"]);}}
+function closeAI(){document.getElementById('chatBox').classList.add('hidden')}
+function aiSay(t){let d=document.createElement('div');d.className="bg-slate-100 p-3 rounded-2xl";d.innerText=t;document.getElementById('msgs').appendChild(d);document.getElementById('msgs').scrollTop=9999}
+function userSay(t){let d=document.createElement('div');d.className="bg-green-600 text-white p-3 rounded-2xl ml-10 text-right";d.innerText=t;document.getElementById('msgs').appendChild(d)}
+function showQuick(arr){document.getElementById('quick').innerHTML=arr.map(a=>`<button onclick="quickClick('${a}')" class="bg-black text-white px-3 py-1 rounded-full text-xs">${a}</button>`).join('')}
+async function quickClick(t){userSay(t); await handleFlow(t)}
+async function sendMsg(){let v=document.getElementById('inp').value; if(!v) return; document.getElementById('inp').value=""; userSay(v); await handleFlow(v)}
+async function handleFlow(text){
+  let low=text.toLowerCase();
+  // If user says they want to start / sell / create account - ONLY THEN start onboarding, not before
+  if(low.includes("i want to start") || low.includes("i want to sell") || low.includes("create account") || low.includes("get started") || low.includes("start selling")){
+    aiSay("Perfect! Let's do it together, no stress. What is your first name?");
+    history.push({role:"user",content:text});
+    // Simple onboarding via AI chat - ask step by step using free chat, not rigid form
+    // We will let AI handle onboarding in next messages by telling it user wants to start
+    history.push({role:"assistant",content:"User wants to start onboarding. Ask for details one by one naturally."});
+    return;
+  }
+  // Normal free chat - Trusty has brain now
+  aiSay("Thinking...");
+  try{
+    let res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text, history, userName})});
+    let j=await res.json();
+    document.getElementById('msgs').lastChild.remove();
+    aiSay(j.reply);
+    // Try to remember name
+    if(!userName && (low.includes("my name is") || low.includes("i am "))){
+      userName=text.replace(/my name is/i,"").trim().split(" ")[0]; localStorage.setItem('trusty_name',userName);
+    }
+    history.push({role:"user",content:text},{role:"assistant",content:j.reply});
+  }catch(e){document.getElementById('msgs').lastChild.remove(); aiSay("I am a bit busy, but TrustMart still works: Verify → Score → Recommend, 12-hour protection. Ask me again.");}
+}
+</script>
+</body></html>

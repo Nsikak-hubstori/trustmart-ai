@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TrustMart Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-slate-50 p-4">
+<div class="max-w-md mx-auto">
+<div class="bg-white p-5 rounded-2xl shadow">
+<h1 class="font-black text-xl">Welcome to TrustMart Dashboard</h1>
+<p id="userEmail" class="text-sm text-slate-500 mt-1">Loading...</p>
+</div>
+
+<!-- Verification Banner -->
+<div id="verifyBanner" class="bg-white p-5 rounded-2xl shadow mt-4">
+<h2 class="font-bold">Please Complete Your Identification To Be Recommended As Legit</h2>
+<p class="text-sm text-slate-600 mt-2">You will need identity verification and selfie to be recommended as Legit, but you can skip and do it later if you want.</p>
+<label class="text-sm font-bold block mt-4">Choose Your Country</label>
+<select id="country" class="w-full border rounded-lg p-3 mt-1">
+<option value="">Select Country...</option>
+<option>Nigeria</option><option>Ghana</option><option>Kenya</option><option>South Africa</option><option>United States</option><option>United Kingdom</option><option>Canada</option><option>India</option><option>Pakistan</option><option>Philippines</option><option>Other Country</option>
+</select>
+<div class="flex gap-2 mt-4">
+<button onclick="continueVerify()" class="flex-1 bg-green-600 text-white py-3 rounded-full font-bold">Continue Verification</button>
+<button onclick="skipVerify()" class="flex-1 bg-black text-white py-3 rounded-full font-bold">Skip For Now</button>
+</div>
+</div>
+
+<!-- Verification Form - Hidden -->
+<div id="verifyForm" class="bg-white p-5 rounded-2xl shadow mt-4 hidden">
+<h2 class="font-bold">Identity Verification</h2>
+<p class="text-sm text-slate-500">Please provide identity verification and selfie.</p>
+<input id="v-id" placeholder="ID Number" class="w-full border rounded-lg p-3 mt-3" />
+<input id="v-address" placeholder="Address" class="w-full border rounded-lg p-3 mt-2" />
+<input id="v-phone" placeholder="Phone Number" class="w-full border rounded-lg p-3 mt-2" />
+<label class="text-sm block mt-3">Selfie</label>
+<input id="v-selfie" type="file" accept="image/*" class="w-full mt-1" />
+<button onclick="submitVerify()" class="w-full bg-green-600 text-white py-3 rounded-full font-bold mt-4">Submit Verification</button>
+</div>
+
+<!-- After Submit -->
+<div id="pendingBox" class="bg-amber-50 border border-amber-200 p-5 rounded-2xl mt-4 hidden">
+<b>Seller / Buyer Account - Verification Pending</b>
+<p class="text-sm mt-2">Thank you! Your identity is being verified. Please wait for 12 hours for Identity Verification. When it is done, you can start posting and marketing your goods if you are a seller, or start ordering for goods if you are a buyer.</p>
+</div>
+
+<!-- Main Dashboard - Hidden until Skip or Verify -->
+<div id="mainDash" class="hidden">
+<div class="bg-white p-5 rounded-2xl shadow mt-4">
+<h2 class="font-bold">My Dashboard</h2>
+<p class="text-sm text-slate-500 mt-1">You can explore products, post goods, and check Trust Score here.</p>
+<button onclick="window.location.href='/'" class="w-full bg-black text-white py-3 rounded-full font-bold mt-4">Back To Home / Chat With Trusty</button>
+</div>
+</div>
+
+</div>
+<script>
+const sb = supabase.createClient("https://cayjgwcjzbvhsrrmfkbu.supabase.co", "sb_publishable_qlCViS85FaiiqNVRqMH8ag_1jsGHhOR");
+async function loadUser(){
+  const { data } = await sb.auth.getUser();
+  if(data?.user) document.getElementById('userEmail').innerText = "Logged in as: " + data.user.email;
+  else document.getElementById('userEmail').innerText = "Welcome! You are logged in via your Dashboard link.";
+}
+loadUser();
+function continueVerify(){ if(!document.getElementById('country').value){ alert("Please choose your country first."); return; } document.getElementById('verifyForm').classList.remove('hidden'); }
+function skipVerify(){ document.getElementById('verifyBanner').style.display='none'; document.getElementById('mainDash').classList.remove('hidden'); }
+async function submitVerify(){
+  document.getElementById('verifyForm').classList.add('hidden');
+  document.getElementById('verifyBanner').style.display='none';
+  document.getElementById('pendingBox').classList.remove('hidden');
+  document.getElementById('mainDash').classList.remove('hidden');
+}
+</script>
+</body></html>

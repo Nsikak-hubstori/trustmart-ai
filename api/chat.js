@@ -49,7 +49,7 @@ export default async function handler(req, res) {
       const linkRes = await fetch(`${S_URL}/auth/v1/admin/generate_link`, {
         method: "POST",
         headers: { "apikey": S_SERVICE, "Authorization": `Bearer ${S_SERVICE}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "magiclink", email: cleanEmail, options: { redirectTo: "https://trustmart-ai.vercel.app/dashboard" } })
+        body: JSON.stringify({ type: "magiclink", email: cleanEmail, options: { redirectTo: "https://trustmart-ai.vercel.app/dashboard.html" } })
       });
       const linkData = await linkRes.json();
 

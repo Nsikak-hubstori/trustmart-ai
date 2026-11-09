@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TrustMart AI - Buy Safe. Sell Trusted.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+.scroll-anim{opacity:0;transform:translateY(28px) scale(.98);transition:opacity .7s ease,transform .7s ease}
+.scroll-anim.visible{opacity:1;transform:translateY(0) scale(1)}
+#aiBubble{transition:transform .5s ease,opacity .5s ease;transform:translateY(20px);opacity:0;pointer-events:none}
+#aiBubble.show{transform:translateY(0);opacity:1;pointer-events:auto}
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+<header class="bg-white p-4 flex justify-between items-center shadow sticky top-0 z-50">
+<div class="font-black text-xl">🛡️ TrustMart <span class="text-green-600">AI</span></div>
+<button onclick="openAI()" class="bg-black text-white px-5 py-2 rounded-full text-sm font-bold">GET STARTED</button>
+</header>
+
+<div style="background:#FFF7ED;border:1px solid #FDBA74;color:#7C2D12;padding:12px 14px;font-size:13px;line-height:1.55;text-align:center;margin:12px 16px 0 16px;border-radius:14px;">
+  <b>⚠️ Important Notice:</b> Please note that TrustMart AI is still a sample project for now. We are currently awaiting sponsorship to officially launch.<br>
+  You are welcome to create an account, explore the platform, view products, and even post products. However, please <b>do not buy or sell anything yet.</b> No real orders or payments should be made at this stage. Thank you for your understanding.
+</div>
+
+<section class="p-4 scroll-anim">
+<img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80" class="w-full h-[280px] object-cover rounded-3xl" alt="People shaking hands">
+<div class="text-center mt-4">
+<div class="text-xs bg-green-100 text-green-700 inline-block px-3 py-1 rounded-full font-bold">Trusted in 190+ Countries • Verified Sellers</div>
+<h1 class="text-3xl font-black mt-3 leading-tight">Buy From People<br>You Can <span class="text-green-600">Trust.</span></h1>
+<p class="text-slate-500 mt-2">Clothes, Shoes & Jewellery. Verified sellers. 12-hour protection.</p>
+<button onclick="openAI()" class="bg-green-600 text-white px-6 py-3 rounded-full mt-4 font-bold">Chat With Trusty →</button>
+<p class="text-xs text-slate-400 mt-2">Ask anything – like ChatGPT, but knows TrustMart. Powered by Groq.</p>
+</div>
+</section>
+
+<section class="p-4">
+<h2 class="font-black text-xl mb-3">Shop By Category</h2>
+<div class="grid grid-cols-3 gap-3 text-center">
+<div class="bg-white rounded-2xl overflow-hidden shadow"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80" class="h-28 w-full object-cover"><p class="font-bold py-2 text-sm">👗 Clothes</p><p class="text-[11px] text-slate-500 px-1 pb-2">Shirts, dresses, native wear</p></div>
+<div class="bg-white rounded-2xl overflow-hidden shadow"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" class="h-28 w-full object-cover"><p class="font-bold py-2 text-sm">👟 Shoes</p><p class="text-[11px] text-slate-500 px-1 pb-2">Sneakers, heels, sandals</p></div>
+<div class="bg-white rounded-2xl overflow-hidden shadow"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80" class="h-28 w-full object-cover"><p class="font-bold py-2 text-sm">💎 Jewellery</p><p class="text-[11px] text-slate-500 px-1 pb-2">Necklaces, rings, watches</p></div>
+</div>
+</section>
+
+<section class="p-5 bg-white m-4 rounded-2xl shadow scroll-anim">
+<h2 class="font-black text-xl">What Is TrustMart All About?</h2>
+<img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&q=80" class="w-full h-48 object-cover rounded-2xl my-3">
+<p class="text-slate-600 text-sm leading-relaxed">TrustMart AI is a safe marketplace for clothes, shoes, and jewellery. You do not just buy and sell. You buy and sell with people who have been verified.<br><br>Trusty – our AI – helps you create your account, add your goods, find customers, write product descriptions, price your goods, and check if someone is legit BEFORE you send money.<br><br>Whether you sell Ankara, sneakers, or gold jewellery, TrustMart makes sure your customers trust you, and you trust your customers.</p>
+</section>
+
+<section class="p-5 bg-white m-4 rounded-2xl shadow scroll-anim">
+<h2 class="font-black text-xl">People Checking, Verifying, Trusting</h2>
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80" class="w-full h-48 object-cover rounded-2xl my-3">
+<p class="text-slate-600 text-sm leading-relaxed">On TrustMart, people don't just shake hands and hope. They check. Before you pay, you see the seller's Trust Score, verification badge, reviews, and history.<br><br>Before a seller ships, they see the buyer's Trust Score too. Both sides are protected. That is how real trust is built – not by promise, but by proof.</p>
+</section>
+
+<section class="p-5 bg-white m-4 rounded-2xl shadow scroll-anim">
+<h2 class="font-black text-xl">Why Do You Need Trust?</h2>
+<img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=900&q=80" class="w-full h-48 object-cover rounded-2xl my-3">
+<p class="text-slate-600 text-sm leading-relaxed">Every day, people lose money to fake sellers and fake buyers on Instagram, WhatsApp, and Facebook.<br><br>• Seller collects money and never delivers.<br>• Buyer orders and never pays.<br>• Seller sends fake product.<br>• Buyer claims they never received it.<br><br>Without trust, there is no safe business. TrustMart was built to solve this problem once and for all.</p>
+</section><section class="p-5 bg-white m-4 rounded-2xl shadow scroll-anim">
+<h2 class="font-black text-xl">How Does Trust Work?</h2>
+<img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=80" class="w-full h-48 object-cover rounded-2xl my-3">
+<p class="text-slate-600 text-sm leading-relaxed"><b>1. VERIFY –</b> Phone number, address, identity verification and selfie. We confirm you are a real person.<br><br><b>2. TRUST SCORE –</b> You get a score from 0 to 100 based on verification, sales, reviews, and reports.<br><br><b>3. RECOMMEND –</b> High score = We recommend you as Trusted & Legit. Low score = We do NOT recommend you. Everyone can see it before they deal with you.<br><br><b>12-Hour Protection –</b> Both buyer and seller get 12 hours to verify the deal. No rush, no scam.</p>
+</section>
+
+<section class="p-5 bg-white m-4 rounded-2xl shadow scroll-anim">
+<h2 class="font-black text-xl">👗 Clothes – Sell Fashion With Trust</h2>
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80" class="w-full h-48 object-cover rounded-2xl my-3">
+<p class="text-slate-600 text-sm leading-relaxed">From Ankara to streetwear, from dresses to suits – sell your clothes to real buyers who trust you because you are verified. Buyers can see your photos, your Trust Score, and your reviews before they pay. No more “send money first and pray”.</p>
+</section>
+
+<section class="p-5 bg-white m-4 rounded-2xl shadow scroll-anim">
+<h2 class="font-black text-xl">👟 Shoes – No More Fake Sneakers</h2>
+<img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=900&q=80" class="w-full h-48 object-cover rounded-2xl my-3">
+<p class="text-slate-600 text-sm leading-relaxed">Shoes are the most scammed product online. TrustMart changes that. Sellers must be verified before they can list sneakers, heels, or sandals. Buyers can check if the seller is legit in 10 seconds. If the Trust Score is high, buy with confidence.</p>
+</section>
+
+<section class="p-5 bg-white m-4 rounded-2xl shadow scroll-anim">
+<h2 class="font-black text-xl">💎 Jewellery – High Value Needs High Trust</h2>
+<img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=900&q=80" class="w-full h-48 object-cover rounded-2xl my-3">
+<p class="text-slate-600 text-sm leading-relaxed">Jewellery is expensive, so trust must be even stronger. Gold, silver, watches, rings – all sellers are verified with identity verification and selfie. Buyers know exactly who they are dealing with. Trusty AI can also help you price your jewellery fairly and write a beautiful description.</p>
+</section>
+
+<section class="p-5 bg-black text-white m-4 rounded-2xl scroll-anim">
+<h2 class="font-black text-xl">Everything About TrustMart</h2>
+<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&q=80" class="w-full h-48 object-cover rounded-2xl my-3">
+<p class="text-sm text-slate-300 leading-relaxed">• <b>Sellers:</b> Add goods, get verified, get recommended, get more customers.<br>• <b>Buyers:</b> Search clothes, shoes, jewellery. Check seller before you pay.<br>• <b>Trusty AI:</b> Ask anything – “Is this person legit?”, “How much should I sell this shoe?”, “Write me a caption for Instagram”.<br>• <b>Safe:</b> 12-hour verification for everyone.<br><br><b>Buy Safe. Sell Trusted.</b></p>
+<button onclick="openAI()" class="bg-green-600 text-white px-6 py-3 rounded-full mt-4 font-bold w-full">Start Now With Trusty →</button>
+</section>
+
+<div class="h-20"></div>
+
+<div id="aiBubble" class="fixed bottom-4 right-4 z-50 bg-black text-white p-3 rounded-2xl shadow-2xl max-w-[260px]">
+<div class="flex justify-between"><span class="text-xs text-green-400 font-bold">Trusty • Online • Groq</span><button onclick="hideBubble()" class="text-white text-xs">✕</button></div>
+<div class="text-sm mt-1">Hey! I'm Trusty. Ask me anything – like ChatGPT.</div>
+<div class="flex gap-2 mt-2"><button onclick="openAI()" class="bg-white text-black px-3 py-1 rounded-full text-xs">Chat Now</button></div>
+</div>
+
+<div id="chatBox" class="fixed inset-0 bg-black/50 z-[60] hidden flex items-end sm:items-center justify-center p-2">
+<div class="bg-white w-full max-w-md rounded-2xl overflow-hidden flex flex-col h-[85vh]">
+<div class="bg-black text-white p-4 flex justify-between"><div><b>🛡️ Trusty – TrustMart AI</b><div class="text-xs text-green-400">Online • Powered by Groq • Answers anything</div></div><button onclick="closeAI()">✕</button></div>
+<div id="msgs" class="flex-1 overflow-y-auto p-3 space-y-2 text-sm"></div>
+<div id="quick" class="p-2 flex gap-2 flex-wrap"></div>
+
+<!-- NEW: SIGNUP BOX - Hidden until Trusty says "fill this form" -->
+<div id="signup-box" style="display:none; background:#F8FAFC; padding:14px; margin:0 10px 10px 10px; border:1px solid #E2E8F0; border-radius:14px;">
+  <b style="font-size:14px;">Create Your TrustMart Account</b>
+  <p style="font-size:12px; color:#64748B; margin:4px 0 10px 0;">Fill this form, I will send you a link to your Dashboard.</p>
+  <input id="signup-name" placeholder="Full Name" style="width:100%; padding:11px; margin-bottom:8px; border:1px solid #CBD5E1; border-radius:10px; font-size:14px;" />
+  <input id="signup-email" placeholder="Email Address" type="email" style="width:100%; padding:11px; margin-bottom:8px; border:1px solid #CBD5E1; border-radius:10px; font-size:14px;" />
+  <input id="signup-password" type="password" placeholder="Password" style="width:100%; padding:11px; margin-bottom:10px; border:1px solid #CBD5E1; border-radius:10px; font-size:14px;" />
+  <button onclick="createAccount()" id="signup-btn" style="width:100%; padding:12px; background:#000; color:#fff; border-radius:10px; font-weight:bold; font-size:14px;">Create Account & Get Dashboard Link</button>
+  <p style="font-size:11px; color:#64748B; margin-top:8px; text-align:center;">Please remember your login password well, that is what you will use to log in. You will need identity verification and selfie later to be recommended as Legit, but you can skip and do it later.</p>
+</div>
+
+<div class="flex p-2 border-t"><input id="inp" class="flex-1 border rounded-full px-3 py-2 text-sm" placeholder="Ask Trusty anything..."><button onclick="sendMsg()" class="bg-green-600 text-white px-4 rounded-full ml-2">Send</button></div>
+</div></div>
+
+<script>
+const SUPABASE_URL="https://cayjgwcjzbvhsrrmfkbu.supabase.co";
+const SUPABASE_KEY="sb_publishable_qlCViS85FaiiqNVRqMH8ag_1jsGHhOR";
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+let bubbleShown=false;
+let bubbleStopped=false;
+function hideBubble(){document.getElementById('aiBubble').classList.remove('show');bubbleStopped=true}
+setInterval(()=>{
+  if(bubbleStopped) return;
+  const bubble=document.getElementById('aiBubble');
+  const chat=document.getElementById('chatBox');
+  if(!chat.classList.contains('hidden')){bubble.classList.remove('show');return;}
+  bubble.classList.toggle('show');
+},5000);
+// ONLY CHANGE: chat saves so it does not disappear on reload
+let history=JSON.parse(localStorage.getItem('trusty_history')||"[]");
+let userName=localStorage.getItem('trusty_name')||"";
+let chatRestored=false;
+function saveChat(){try{localStorage.setItem('trusty_history',JSON.stringify(history.slice(-30)))}catch(e){}}
+function restoreChat(){if(chatRestored) return; chatRestored=true; if(history.length>0){history.forEach(h=>{if(h.role==='user') userSay(h.content); else aiSay(h.content);})}}
+function openAI(){document.getElementById('chatBox').classList.remove('hidden');document.getElementById('aiBubble').classList.remove('show'); restoreChat(); if(history.length==0){ if(userName){aiSay("Welcome back "+userName+"! What would you like to do today? I can help you sell, buy, check if someone is legit, or answer any question.");} else {aiSay("Hello! I'm Trusty, the AI assistant for TrustMart. I can help you with TrustMart, or answer any question like ChatGPT. What would you like to know?");} showQuick(["I want to sell","I want to buy","Is someone legit?","Give me a business idea"]);} else {showQuick(["I want to sell","I want to buy","Is someone legit?","Give me a business idea"]);}}
+function closeAI(){document.getElementById('chatBox').classList.add('hidden')}
+function aiSay(t){let d=document.createElement('div');d.className="bg-slate-100 p-3 rounded-2xl";d.innerText=t;document.getElementById('msgs').appendChild(d);document.getElementById('msgs').scrollTop=9999}
+function userSay(t){let d=document.createElement('div');d.className="bg-green-600 text-white p-3 rounded-2xl ml-10 text-right";d.innerText=t;document.getElementById('msgs').appendChild(d)}
+function showQuick(arr){document.getElementById('quick').innerHTML=arr.map(a=>`<button onclick="quickClick('${a}')" class="bg-black text-white px-3 py-1 rounded-full text-xs">${a}</button>`).join('')}
+async function quickClick(t){userSay(t); await handleFlow(t)}
+async function sendMsg(){let v=document.getElementById('inp').value; if(!v) return; document.getElementById('inp').value=""; userSay(v); await handleFlow(v)}
+
+// NEW: Show / Hide signup box
+function showSignupBox(){ document.getElementById('signup-box').style.display='block'; document.getElementById('msgs').scrollTop=9999; }
+function hideSignupBox(){ document.getElementById('signup-box').style.display='none'; }
+
+// NEW: Create account - sends Name + Email + Password to Supabase via /api/chat, Supabase sends email
+async function createAccount(){
+  const name = document.getElementById('signup-name').value.trim();
+  const email = document.getElementById('signup-email').value.trim();
+  const password = document.getElementById('signup-password').value;
+  if(!name || !email || !password){ aiSay("Please fill your Full Name, Email and Password in the form."); return; }
+  if(password.length < 6){ aiSay("Please use a password of at least 6 characters."); return; }
+  const btn = document.getElementById('signup-btn');
+  btn.innerText = "Creating your account..."; btn.disabled = true;
+  userSay("I filled the form: " + name + " - " + email);
+  aiSay("Thinking...");
+  try{
+    let res = await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ type:'signup', name, email, password, message: "User filled signup form", history })});
+    let j = await res.json();
+    document.getElementById('msgs').lastChild.remove();
+    aiSay(j.reply);
+    history.push({role:"user",content:"I filled signup form"},{role:"assistant",content:j.reply}); saveChat();
+    if(j.dashboardLink){
+      let d=document.createElement('div'); d.className="bg-green-50 p-3 rounded-2xl border border-green-200";
+      d.innerHTML = `<b>Your Dashboard Link</b><br><a href="${j.dashboardLink}" target="_blank" style="color:#16A34A; word-break:break-all;">Open My Dashboard →</a><br><span style="font-size:12px;">Also check your email inbox + spam for the link.</span>`;
+      document.getElementById('msgs').appendChild(d);
+    }
+    hideSignupBox();
+    localStorage.setItem('trusty_name', name.split(" ")[0]);
+  }catch(e){ document.getElementById('msgs').lastChild.remove(); aiSay("Error: Could not create account. Please try again."); }
+  btn.innerText = "Create Account & Get Dashboard Link"; btn.disabled = false;
+}
+
+async function handleFlow(text){
+  aiSay("Thinking...");
+  try{
+    let res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text, history, userName})});
+    let j=await res.json();
+    document.getElementById('msgs').lastChild.remove();
+    aiSay(j.reply);
+    history.push({role:"user",content:text},{role:"assistant",content:j.reply}); saveChat();
+    // NEW: If Trusty says "fill this form", show the box
+    if(j.reply.toLowerCase().includes("fill this form") || j.reply.toLowerCase().includes("fill the form") || text.toLowerCase().includes("create account") || text.toLowerCase().includes("i want to sell") || text.toLowerCase().includes("i want to buy")){
+      showSignupBox();
+    }
+    if(!userName && text.toLowerCase().includes("my name is")){userName=text.split("my name is")[1].trim().split(" ")[0]; localStorage.setItem('trusty_name',userName)}
+  }catch(e){document.getElementById('msgs').lastChild.remove(); aiSay("Error: Could not reach /api/chat. Make sure vercel.json is deleted and you redeployed.");}
+}
+document.getElementById('inp').addEventListener('keydown',e=>{if(e.key==='Enter') sendMsg()});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible')})},{threshold:0.12});
+document.querySelectorAll('.scroll-anim').forEach(el=>observer.observe(el));
+</script>
+</body></html>

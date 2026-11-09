@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TrustMart AI - Buy Safe. Sell Trusted.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+.scroll-anim{opacity:0;transform:translateY(28px) scale(.98);transition:opacity .7s ease,transform .7s ease}
+.scroll-anim.visible{opacity:1;transform:translateY(0) scale(1)}
+#aiBubble{transition:transform .5s ease,opacity .5s ease;transform:translateY(20px);opacity:0;pointer-events:none}
+#aiBubble.show{transform:translateY(0);opacity:1;pointer-events:auto}
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+<header class="bg-white p-4 flex justify-between items-center shadow sticky top-0 z-50">
+<div class="font-black text-xl">🛡️ TrustMart <span class="text-green-600">AI</span></div>
+<button onclick="openAI()" class="bg-black text-white px-5 py-2 rounded-full text-sm font-bold">GET STARTED</button>
+</header>
+
+<div style="background:#FFF7ED;border:1px solid #FDBA74;color:#7C2D12;padding:12px 14px;font-size:13px;line-height:1.55;text-align:center;margin:12px 16px 0 16px;border-radius:14px;">
+  <b>⚠️ Important Notice:</b> Please note that TrustMart AI is still a sample project for now. We are currently awaiting sponsorship to officially launch.<br>
+  You are welcome to create an account, explore the platform, view products, and even post products. However, please <b>do not buy or sell anything yet.</b> No real orders or payments should be made at this stage. Thank you for your understanding.
+</div>
+
+<section class="p-4 scroll-anim">
+<img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80" class="w-full h-[280px] object-cover rounded-3xl" alt="People shaking hands">
+<div class="text-center mt-4">
+<div class="text-xs bg-green-100 text-green-700 inline-block px-3 py-1 rounded-full font-bold">Trusted in 190+ Countries • Verified Sellers</div>
+<h1 class="text-3xl font-black mt-3 leading-tight">Buy From People<br>You Can <span class="text-green-600">Trust.</span></h1>
+<p class="text-slate-500 mt-2">Clothes, Shoes & Jewellery. Verified sellers. 12-hour protection.</p>
+<button onclick="openAI()" class="bg-green-600 text-white px-6 py-3 rounded-full mt-4 font-bold">Chat With Trusty →</button>
+<p class="text-xs text-slate-400 mt-2">Ask anything – like ChatGPT, but knows TrustMart. Powered by Groq.</p>
+</div>
+</section>
+
+<section class="p-4">
+<h2 class="font-black text-xl mb-3">Shop By Category</h2>
+<div class="grid grid-cols-3 gap-3 text-center">
+<div class="bg-white rounded-2xl overflow-hidden shadow"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80" class="h-28 w-full object-cover"><p class="font-bold py-2 text-sm">👗 Clothes</p><p class="text-[11px] text-slate-500 px-1 pb-2">Shirts, dresses, native wear</p></div>
+<div class="bg-white rounded-2xl overflow-hidden shadow"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" class="h-28 w-full object-cover"><p class="font-bold py-2 text-sm">👟 Shoes</p><p class="text-[11px] text-slate-500 px-1 pb-2">Sneakers, heels, sandals</p></div>
+<div class="bg-white rounded-2xl overflow-hidden shadow"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80" class="h-28 w-full object-cover"><p class="font-bold py-2 text-sm">💎 Jewellery</p><p class="text-[11px] text-slate-500 px-1 pb-2">Necklaces, rings, watches</p></div>
+</div>
+</section>
+
+<section class="p-5 bg-white m-4 rounded-2xl shadow scroll-anim">
+<h2 class="font-black text-xl">What Is TrustMart All About?</h2>
+<img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&q=80" class="w-full h-48 object-cover rounded-2xl my-3">
+<p class="text-slate-600 text-sm leading-relaxed">TrustMart AI is a safe marketplace for clothes, shoes, and jewellery. You do not just buy and sell. You buy and sell with people who have been verified.<br><br>Trusty – our AI – helps you create your account, add your goods, find customers, write product descriptions, price your goods, and check if someone is legit BEFORE you send money.<br><br>Whether you sell Ankara, sneakers, or gold jewellery, TrustMart makes sure your customers trust you, and you trust your customers.</p>
+</section>
+
+<section class="p-5 bg-white m-4 rounded-2xl shadow scroll-anim">
+<h2 class="font-black text-xl">People Checking, Verifying, Trusting</h2>
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80" class="w-full h-48 object-cover rounded-2xl my-3">
+<p class="text-slate-600 text-sm leading-relaxed">On TrustMart, people don't just shake hands and hope. They check. Before you pay, you see the seller's Trust Score, verification badge, reviews, and history.<br><br>Before a seller ships, they see the buyer's Trust Score too. Both sides are protected. That is how real trust is built – not by promise, but by proof.</p>
+</section>
+
+<section class="p-5 bg-white m-4 rounded-2xl shadow scroll-anim">
+<h2 class="font-black text-xl">Why Do You Need Trust?</h2>
+<img src="https://images.unsplash.com/photo-155674073
